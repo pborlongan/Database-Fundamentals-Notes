@@ -42,22 +42,19 @@ There is no partial dependency.
 ### 3NF 
 
 After performing Third Normal Form, a two entities were generated:
-**Supplier**, **SupplierItems**
+**Supplier**
 
 
 **Supplier**: ( <b class="pk">SupplierNumber</b>, SupplierName, Address, City, Province, PostalCode)
 
-**SupplierItems**: ( <b class="pk">SupplierItemNumber</b>, SupplierDescription, Cost )
 
 ## Purchase Order - After Normalization:
 
 **PurchaseOrder**: ( <b class="pk">PurchaseOrderNumber</b>, <u class="fk">SupplierNumber</u>, Date, Subtotal, GST, Total )
 
-**PurchaseOrderItem**: ( <b class="pk"><u class ="fk">PurchaseOrderNumber</u>, ItemNumber</b>, <u class ="fk">SupplierItemNumber</u>\, Quantity, Amount )
+**PurchaseOrderItem**: ( <b class="pk"><u class ="fk">PurchaseOrderNumber</u>, ItemNumber</b>, SupplierItemNumber, SupplierDescription, Cost, Quantity, Amount )
 
 **Supplier**: ( <b class="pk">SupplierNumber</b>, SupplierName, Address, City, Province, PostalCode)
-
-**SupplierItems**: ( <b class="pk">SupplierItemNumber</b>, SupplierDescription, Cost )
 
 
 <style type="text/css">
