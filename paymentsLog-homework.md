@@ -1,12 +1,13 @@
 # Normalization: Payments Log
+### ESP #2
 
 ## 0NF 
 
-PaymentsLog ( CustomerFirstName, CustomerLastName, OrderDate, CustomerNumber, <b class="pk">OrderNumber</b>, OrderTotal, <b class="gr">{</b> Date, PaymentAmount, PaymentNumber, BalanceOwing, PaymentType, DepositBatchNumber<b class="gr">}</b> )
+PaymentsLog ( FirstName, LastName, OrderDate, CustomerNumber, <b class="pk">OrderNumber</b>, OrderTotal, <b class="gr">{</b> Date, PaymentAmount, PaymentNumber, BalanceOwing, PaymentType, DepositBatchNumber<b class="gr">}</b> )
 
 ## 1NF
 
-After performing First Normal Form, a new entity was made: **Payment**
+After performing First Normal Form, a single table was generated: **Payment**
 
 PaymentsLog ( <b class="pk">OrderNumber</b>, CustomerNumber, OrderTotal, OrderDate, CustomerFirstName, CustomerLastName )
 
@@ -18,18 +19,33 @@ There are no partial dependencies found.
 
 ## 3NF
 
-After performing Third Normal Form, a new entity was made:
-**Customer**
+After performing Third Normal Form, a single table was generated: **Customer**
 
 PaymentsLog ( <b class="pk">OrderNumber</b>, <u class="fk">CustomerNumber</u>, OrderDate, OrderTotal )
 
-Payment ( <b class="pk"><u class="fk">OrderNumber</u>, PaymentNumber</b>, BalanceOwing, PaymentType, DepositBatchNumber )
+Payment ( <b class="pk"><u class="fk">OrderNumber</u>, PaymentNumber</b>, Date, PaymentAmount, BalanceOwing, PaymentType,  DepositBatchNumber )
 
-Customer ( <b class="pk">CustomerNumber</b>, CustomerFirstName, CustomerLastNumber )
-
-
+Customer ( <b class="pk">CustomerNumber</b>, FirstName, LastNumber )
 
 
+------------------
+
+Other solution:
+
+## 1NF
+
+PaymentsLog (OrderNumber, OrderDate, OrderTotal, FirstName, LastName, CustomerNumber)
+
+Payment ( <b class="pk"><b class="fk">OrderNumber</b>, PaymentNumber</b>, Date, PaymentAmount, BalanceOwing, PaymentType, DepositBatchNumber )
+
+
+## 2NF
+
+PaymentLog (<b class="pk">OrderNumber</b>s, OrderDate, OrderTotal, FirstName, LastName, CustomerNumber)
+
+PaymentLogDetails (<b class="pk"><u class="fk">OrderNumber</u>, <u class="fk">PaymentID</u></b>, PaymentNumber, BalanceOwing, DepositBatchnumber)
+
+Payment (<b class="tk"><b class="pk">PaymentID</b></b>, Date, PaymentAmount, PaymentType)
 
 <style type="text/css">
 .pk {
@@ -38,6 +54,12 @@ Customer ( <b class="pk">CustomerNumber</b>, CustomerFirstName, CustomerLastNumb
     border: solid thin blue;
     padding: 0 1px;
 }
+
+.tk{
+    color: orange;
+    font-weight: bold;
+}
+
 .fk {
     color: green;
     font-style: italic;
