@@ -40,6 +40,11 @@ Customer (<b class="pk">CustomerNumber</b>, FirstName, LastName, Address, City, 
 | ------------- |:-------------:| -----:| ------------- |:-------------:| -----:| ------------- |:-------------:|
 | 137 |Fred | Smith| 123 SomeWhere St. | Edmonton | AB | T5H 2J9 | 436-7867
 
+## ERD
+The following ERD represents ESP-1.
+
+![](ESP-1-ERD-CustomerDetailView.png)
+![](ESP-1-ERD-CustomerOrdersView.png)
 
 ## Translation
 
@@ -55,12 +60,10 @@ Each **Item** may be <u>sold under</u> one or more **OrderDetails**.
 
 Each **OrderDetail** must be <u>a sale of</u> one and only one **Item**.
 
-## ERD
-The following ERD represents the tables/entities:
-
-![](ESP-1-ERD-CustomerDetailView.png)
 
 
+
+-----------------
 <style type="text/css">
 .pk {
     font-weight: bold;
