@@ -27,6 +27,16 @@ Payment ( <b class="pk"><u class="fk">OrderNumber</u>, PaymentNumber</b>, Date, 
 
 Customer ( <b class="pk">CustomerNumber</b>, FirstName, LastNumber )
 
+## ERD for ESP 2 (before merge)
+
+![](ESP-1-ERD-CustomerPaymentsView.png)
+
+### Notes:
+
+- PaymentLog entity merged with Order entity from ESP 1.
+- OrderTotal attribute from PaymentLog entity updated to 'Total'.
+
+
 
 ------------------
 
@@ -46,6 +56,9 @@ PaymentLog (<b class="pk">OrderNumber</b>s, OrderDate, OrderTotal, FirstName, La
 PaymentLogDetails (<b class="pk"><u class="fk">OrderNumber</u>, <u class="fk">PaymentID</u></b>, PaymentNumber, BalanceOwing, DepositBatchnumber)
 
 Payment (<b class="tk"><b class="pk">PaymentID</b></b>, Date, PaymentAmount, PaymentType)
+
+
+-------------------
 
 <style type="text/css">
 .pk {
