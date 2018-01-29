@@ -1,4 +1,4 @@
-# Normalization
+# ESP-1
 
 ##  3NF
 
@@ -54,6 +54,11 @@ Each **OrderDetail** must be <u>for</u> one and only one **Order**.
 Each **Item** may be <u>sold under</u> one or more **OrderDetails**.
 
 Each **OrderDetail** must be <u>a sale of</u> one and only one **Item**.
+
+## ERD
+The following ERD represents the tables/entities:
+
+![](ESP-1-ERD-CustomerDetailView.png)
 
 
 <style type="text/css">
