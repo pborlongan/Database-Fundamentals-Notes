@@ -55,11 +55,13 @@ After performing Zero Normal Form, a new entity was generated: **_Book_**
 
 After performing First Normal Form, a new entity was generated: **_Author_**
 
-**Author**: ( <b class="pk"><u class="fk">ISBN</u>, AuthorCode</b>, AuthorFirstName, AuthorLastName )
+**Author**: ( <b class="pk"><u class="fk">ISBN</u>, <u class="fk">AuthorCode</u></b>, AuthorFirstName, AuthorLastName )
 
 ### 2NF: Partial Dependencies
 
-After performing Second Normal Form, no new entity was generated.
+After performing Second Normal Form, a new entity was generated: **_AuthorDetails_**
+
+**AuthorDetails**: ( <b class="pk">AuthorCode</b>, AuthorFirstName, AuthorLastName )
 
 ### 3NF: Transitive Dependencies
 
@@ -74,19 +76,21 @@ After performing Third Normal Form, two new entities were generated: **_Publishe
 
 Here are the tables/entities after normalizing the Book Title View:
 
-**Book**: ( <b class="pk">ISBN</b>, <u class="fk">PublisherCode</u>, <u class="fk">CategoryCode</u>, Title, SuggestedSellingPrice, NumberInStock )
+**Book:** ( <b class="pk">ISBN</b>, <u class="fk">PublisherCode</u>, <u class="fk">CategoryCode</u>, Title, SuggestedSellingPrice, NumberInStock )
 
-**Author**: ( <b class="pk"><u class="fk">ISBN</u>, AuthorCode</b>, FirstName, LastName )
+**Author:** ( <b class="pk"><u class="fk">ISBN</u>, <u class="fk">AuthorCode</u></b> )
 
-**Publisher**: ( <b class="pk">PublisherCode</b>, PublisherName )
+**AuthorDetails:** ( <b class="pk">AuthorCode</b>, AuthorFirstName, AuthorLastName )
 
-**Category**: ( <b class="pk">CategoryCode</b>, CategoryDescription )
+**Publisher:** ( <b class="pk">PublisherCode</b>, PublisherName )
+
+**Category:** ( <b class="pk">CategoryCode</b>, CategoryDescription )
 
 
 ### ERD
 The following ERD represents the tables/entities from the **Book Title View**
 
-![](Book-Title-View-ERD.png)
+![]()
 
 
 
