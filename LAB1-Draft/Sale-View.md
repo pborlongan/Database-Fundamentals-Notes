@@ -9,9 +9,9 @@ After performing Zero Normal Form, a new entity was generated: **_Sale_**
 
 ## 1NF: Repeating Groups
 
-After performing First Normal Form, a new entity was generated: **_SaleDetail_**
+After performing First Normal Form, a new entity was generated: **_SaleDetails_**
 
-**SaleDetail:** ( <b class="pk"><u class="fk">SaleNumber</u>, ISBN</b>, BookTitle, Price, Quantity, Amount )
+**SaleDetails:** ( <b class="pk"><u class="fk">SaleNumber</u>, ISBN</b>, BookTitle, Price, Quantity, Amount )
 
 ## 2NF: Partial Dependencies
 
@@ -25,20 +25,20 @@ After performing Third Normal Form, two new entities were generated: **_Customer
 
 **Customer:** ( <b class="pk">CustomerNumber</b>, CustomerFirstName, CustomerLastName, Address, Province, City, PostalCode )
 
-**Category:** ( <b class="pk">CategoryCode</b>, EmployeeFirstName, EmployeeLastName )
+**Employee:** ( <b class="pk">Employee</b>, EmployeeFirstName, EmployeeLastName )
 
 
 # Entities After 3NF:
 
 **Sale:** ( <b class="pk">SaleNumber</b>, <u class="fk">CustomerNumber</u>, <u class="fk">EmployeeNumber</u>, Date, Subtotal, GST, Total)
 
-**SaleDetail:** ( <b class="pk"><u class="fk">SaleNumber</u>, <u class="fk">ISBN</u></b>, BookTitle, Price, Quantity, Amount )
+**SaleDetails:** ( <b class="pk"><u class="fk">SaleNumber</u>, <u class="fk">ISBN</u></b>, BookTitle, Price, Quantity, Amount )
 
 **Book:** ( <b class="pk">ISBN</b>, BookTitle, Price )
 
 **Customer:** ( <b class="pk">CustomerNumber</b>, CustomerFirstName, CustomerLastName, Address, Province, City, PostalCode )
 
-**Category:** ( <b class="pk">CategoryCode</b>, EmployeeFirstName, EmployeeLastName )
+**Employee:** ( <b class="pk">EmployeeNumber</b>, EmployeeFirstName, EmployeeLastName )
 
 
 
