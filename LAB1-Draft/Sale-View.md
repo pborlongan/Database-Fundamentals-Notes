@@ -1,4 +1,4 @@
-# BOOK TITLE VIEW
+# SALE VIEW
 
 ## 0NF: List all attributes and make them atomic
 
@@ -32,7 +32,7 @@ After performing Third Normal Form, two new entities were generated: **_Customer
 
 **Sale:** ( <b class="pk">SaleNumber</b>, <u class="fk">CustomerNumber</u>, <u class="fk">EmployeeNumber</u>, Date, Subtotal, GST, Total)
 
-**SaleDetails:** ( <b class="pk"><u class="fk">SaleNumber</u>, <u class="fk">ISBN</u></b>, BookTitle, Price, Quantity, Amount )
+**SaleDetails:** ( <b class="pk"><u class="fk">SaleNumber</u>, <u class="fk">ISBN</u></b>, Quantity, Amount )
 
 **Book:** ( <b class="pk">ISBN</b>, BookTitle, Price )
 
@@ -41,7 +41,10 @@ After performing Third Normal Form, two new entities were generated: **_Customer
 **Employee:** ( <b class="pk">EmployeeNumber</b>, EmployeeFirstName, EmployeeLastName )
 
 
+## ERD
+The following ERD represents the tables/entities from the **Sale View**
 
+![](Sale-View-ERD.png)
 
 
 

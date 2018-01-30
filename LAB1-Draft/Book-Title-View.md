@@ -30,14 +30,17 @@ After performing Third Normal Form, two new entities were generated: **_Publishe
 
 **Book**: ( <b class="pk">ISBN</b>, <u class="fk">PublisherCode</u>, <u class="fk">CategoryCode</u>, Title, SuggestedSellingPrice, NumberInStock )
 
-**Author**: ( <b class="pk"><u class="fk">ISBN</u>, AuthorCode</b>, AuthorFirstName, AuthorLastName )
+**Author**: ( <b class="pk"><u class="fk">ISBN</u>, AuthorCode</b>, FirstName, LastName )
 
 **Publisher**: ( <b class="pk">PublisherCode</b>, PublisherName )
 
 **Category**: ( <b class="pk">CategoryCode</b>, CategoryDescription )
 
 
+## ERD
+The following ERD represents the tables/entities from the **Book Title View**
 
+![](Book-Title-View-ERD.png)
 
 -------------
 <style type="text/css"> 

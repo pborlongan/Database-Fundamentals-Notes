@@ -21,11 +21,17 @@ After performing Third Normal Form, a new entity was generated: **_EmployeeGroup
 
 After performing Third Normal Form, no new entity was generated.
 
-# Entities After 3NF:
+## Entities After 3NF:
 
 **Employee**: ( <b class="pk">EmployeeNumber</b>, SIN, FirstName, LastName, Address, City, PostalCode, HomePhone, WorkPhone, Email )
 
 **EmployeeGroup**: ( <b class="pk"><u class="fk">EmployeeNumber</u>, EmployeeGroupCode</b>, EmployeeGroupName, Wage )
+
+## ERD
+The following ERD represents the tables/entities from the **Employee View**
+
+![](Employee-View-ERD.png)
+
 
 
 -------------
