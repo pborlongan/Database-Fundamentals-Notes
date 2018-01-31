@@ -161,7 +161,10 @@ Here are the following merged entities:
 - **Book** from Book Title View and **Book** from Sale View
     - after merging the two tables, a single **Book** entity was generated:
 
-        **Book:** ( <b class="pk">ISBN</b>, <u class="fk">PublisherCode</u>, <u class="fk">CategoryCode</u>, BookTitle, SuggestedRetailPrice, NumberInStock)
+        **Book:** ( <b class="pk">ISBN</b>, <u class="fk">PublisherCode</u>, <u class="fk">CategoryCode</u>, BookTitle, SuggestedRetailPrice, NumberInStock, SellingPrice)
+        **Note:** The attribute named "Price" from the entity **Sale View** was changed to "SellingPrice" to avoid confusion.
+        
+      
 
 ## Final Database for Books Galore
 
