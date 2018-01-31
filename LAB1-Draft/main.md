@@ -94,6 +94,8 @@ The following ERD represents the tables/entities from the **Book Title View**
 
 ![](Book-Title-View-ERD.png)
 
+----------------------------
+
 ## SALE VIEW
 
 The Employee View and its resulting tables are based on the following form:
@@ -144,7 +146,7 @@ After performing Third Normal Form, two new entities were generated: **_Customer
 The following ERD represents the tables/entities from the **Sale View**
 
 ![](Sale-View-ERD.png)
-
+-----------------------------
 ## Merged Entities
 
 To avoid duplicated entities, we merged entities with the same entity name and same primary/foreign keys.
