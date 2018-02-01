@@ -146,6 +146,7 @@ After performing Third Normal Form, two new entities were generated: **_Customer
 The following ERD represents the tables/entities from the **Sale View**
 
 ![](Sale-View-ERD.png)
+
 -----------------------------
 ## Merged Entities
 
@@ -166,9 +167,29 @@ Here are the following merged entities:
     **Note:** The attribute named "Price" from the entity **Sale View** was changed to "SellingPrice" to avoid confusion.
         
       
-
 ## Final Database for Books Galore
 
+**Employee**: ( <b class="pk">EmployeeNumber</b>, SIN, FirstName, LastName, <u class="fk">EmployeeGroupCode</u>, Address, City, PostalCode, HomePhone, WorkPhone, Email )
+
+**EmployeeGroup**: ( <b class="pk">EmployeeGroupCode</b>, EmployeeGroupName, Wage )
+
+**Book:** ( <b class="pk">ISBN</b>, <u class="fk">PublisherCode</u>, <u class="fk">CategoryCode</u>, Title, SuggestedSellingPrice, NumberInStock )
+
+**BookDetails:** ( <b class="pk"><u class="fk">ISBN</u>, <u class="fk">AuthorCode</u></b> )
+
+**Author:** ( <b class="pk">AuthorCode</b>, AuthorFirstName, AuthorLastName )
+
+**Publisher:** ( <b class="pk">PublisherCode</b>, PublisherName )
+
+**Category:** ( <b class="pk">CategoryCode</b>, CategoryDescription )
+
+**Sale:** ( <b class="pk">SaleNumber</b>, <u class="fk">CustomerNumber</u>, <u class="fk">EmployeeNumber</u>, Date, Subtotal, GST, Total)
+
+**SaleDetails:** ( <b class="pk"><u class="fk">SaleNumber</u>, <u class="fk">ISBN</u></b>, Quantity, Amount )
+
+**Book:** ( <b class="pk">ISBN</b>, <u class="fk">PublisherCode</u>, <u class="fk">CategoryCode</u>, BookTitle, SuggestedRetailPrice, NumberInStock, SellingPrice)
+
+**Customer:** ( <b class="pk">CustomerNumber</b>, CustomerFirstName, CustomerLastName, Address, Province, City, PostalCode )
 
 
 -------------
