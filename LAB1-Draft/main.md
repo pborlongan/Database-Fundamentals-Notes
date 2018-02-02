@@ -191,6 +191,9 @@ Here are the following merged entities:
 
 **Customer:** ( <b class="pk">CustomerNumber</b>, CustomerFirstName, CustomerLastName, Address, Province, City, PostalCode )
 
+### Final ERD
+
+![](Final-ERD.png)
 
 -------------
 <style type="text/css"> 
