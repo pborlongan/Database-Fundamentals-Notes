@@ -33,6 +33,20 @@ CREATE TABLE Customers
     Province        char(2) 
                     CONSTRAINT DF_Customers_Province
 					DEFAULT ('AB')
+                    CONSTRAINT CK_Customers_Province
+					CHECK ( Province = 'AB' OR
+							Province = 'BC' OR
+							Province = 'SK' OR
+							Province = 'MB' OR
+							Province = 'QC' OR
+							Province = 'ON' OR
+							Province = 'NT' OR
+							Province = 'NS' OR
+							Province = 'NB' OR
+							Province = 'NL' OR
+							Province = 'YK' OR
+							Province = 'NU' OR
+							Province = 'PE')
                     NOT NULL,
     PostalCode      char(6)		
                     CONSTRAINT CK_Customers_PostalCode
