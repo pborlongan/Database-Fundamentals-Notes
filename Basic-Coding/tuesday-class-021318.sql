@@ -21,9 +21,9 @@ GO  -- this statement helps to "separate" various DDL statements in our script
 
 /* DROP TABLE statements (to "clean up" the database for re-creation)  */
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'OrderDetails')
-    DROP TABLE Orders
+    DROP TABLE OrderDetails
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'InventoryItems')
-    DROP TABLE Customers
+    DROP TABLE InventoryItems
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Orders')
     DROP TABLE Orders
 IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Customers')
@@ -126,7 +126,7 @@ CREATE TABLE OrderDetails
     ItemNumber          varchar(5)
         CONSTRAINT  FK_OrderDetails_ItemNumber_InventoryItems_ItemNumber
             FOREIGN KEY REFERENCES
-            InventoryItems(ItemNumber)      NOT NULL
+            InventoryItems(ItemNumber)      NOT NULL,
     Quantity			int
 		CONSTRAINT DF_OrderDetails_Quantity
 			DEFAULT (1)
@@ -142,8 +142,91 @@ CREATE TABLE OrderDetails
         PRIMARY KEY (OrderNumber, ItemNumber) -- specify all the columns in the PK
 )
 
+/**
+    change requests for spec 1
+        perform table changes through ALTER statements
+        syntax for ALTER TABLE can be found at
+    http://msdn.microsoft.com/en-us/library/ms190273.aspx
+    ALTER TABLE statements allow us to change an existing table without 
+    having to drop it or lose information in the table
+**/
 
+-- A) allow address, city, province, and postal code to be NULL
+
+ALTER TABLE Customers
+    ALTER COLUMN [Address] varchar (40) NULL
+GO -- this statement helps to "separate" various DDL statements in our script. it's oprional
+
+ALTER TABLE Customers
+    ALTER COLUMN City varchar (35) NULL
+GO
+
+ALTER TABLE Customers
+    ALTER COLUMN Province char (2) NULL
+GO
+
+ALTER TABLE Customers
+    ALTER COLUMN PostalCode char(6) NULL
+GO
+
+-- B) add a check constraint on the first and last name to require at least two letters.
+--		% is a wildcard for zero or more characters (letter, digit or other character)
+--		_ is a wildcard for a single character (letter, digit or other character)
+--		[] are used to represent a range or set of characters that are allowed
+
+IF OBJECT_ID ('CK_Customers_FirstName', 'C') IS NOT NULL
+	ALTER TABLE Customers DROP CONSTRAINT CK_Customers_FirstName
+	
+ALTER TABLE Customer
+	ADD CONSTRAINT CK_Customers_FirstName
+		CHECK (FirstName LIKE '[A-Z][A-Z]%')	 
+
+--	C) add a default constraint on the orders.date column to use the current date
+--		GETDATE() is a global function in the SQL server database
+--		GETDATE() will obtain the current date/time on the database server
+
+IF OBJECT_ID ('DF_Orders_Date', 'C') IS NOT NULL
+	ALTER TABLE Orders DROP CONSTRAINT DF_Orders_Date
+	
+ALTER TABLE Orders
+	ADD CONSTRAINT DF_Orders_Date
+		DEFAULT GETDATE() FOR [Date]
+GO
+
+-- D) Change the InventoryItems.ItemDescription column to be NOT NULL
+--		but: we have described the ItemDescription as allowing NULL values.
+--		That means we might have data in the table where the ItemDescription doesn't exist/
+--		If we try to make that column NOT NULL, what will we do about
+--		the existing data in the database where it is "empty">>
+--		we can fix that by updating the data in the database
+--		where that description is missing.
+
+UPDATE		InventoryItems
+	SET		ItemDescription = '-missing-'
+	WHERE	ItemDescription IS NULL
+GO
+
+-- now we can change the ItemDescription to be required (NOT NULL)
+ALTER TABLE InventoryItems
+	ALTER COLUMN ItemDescription varchar (50) NOT NULL
+GO
+
+--	E) add indexes to the customer's first and last name columns
+--	as well as to the item's description column
+--	indexes improve the performance of the database when retrieving information
+CREATE NONCLUSTERED INDEX IX_Customer_FirstName
+	ON	Customers(FirstName)
+CREATE NONCLUSTERED INDEX IX_Customer_LastName
+	ON	Customers(LastName)
+CREATE NONCLUSTERED INDEX IX_InventoryItems_ItemDescription
+	ON	InventoryItems(ItemDescription)
 GO -- End of a batch of instructions
+
+
+
+-- next class: we will move the INSERT statements to another part of the script 
+
+
 
 -- Let's insert a few rows of data for the tables
 PRINT 'Inserting customer data'
