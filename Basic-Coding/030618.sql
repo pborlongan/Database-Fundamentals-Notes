@@ -38,6 +38,14 @@ FROM Course
 SELECT SUBSTRING(PositionDescription, 8, 6)
 FROM Position
 WHERE PositionID = 5
+-- gives admini
+-- or
+
+SELECT SUBSTRING(PositionDescription, 8, 13)
+FROM Position
+WHERE PositionID = 5
+-- gives administrator
+
 
 -- 8. Select all the Student First Names as upper case.
 SELECT UPPER(FirstName) AS 'First Name'
