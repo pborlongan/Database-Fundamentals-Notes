@@ -1,6 +1,8 @@
 --Subquery Exercise
 --Use the IQSchool database for this exercise. Each question must use a subquery in its solution.
 --**If the questions could also be solved without a subquery, solve it without one as well**
+-- outer join gives you all the data
+
 USE [A01-School]
 GO
 
