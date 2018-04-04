@@ -33,8 +33,8 @@ ALTER PROCEDURE AddClub
     -- Parameters here
 	-- MUST start with @
 	-- default the parameters to null so they always have a value, even if not passed one
-	@ClubID varchar(10) = null,
-	@ClubName varchar(50) = null
+	@ClubID varchar(10),
+	@ClubName varchar(50)
 AS
     -- Body of procedure here
 	IF @ClubID IS NULL OR @ClubName IS NULL
