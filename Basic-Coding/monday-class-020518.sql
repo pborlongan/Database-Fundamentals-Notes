@@ -16,7 +16,7 @@ IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Customers
 -- PRIMARY KEY contraints ensure a row of data being added to the table
 -- will have to have a unique value for the PRIMARY KEY column(s)
 
--- added IDENTITY 
+-- added IDENTITY   
 -- IDENTITY means the database will generate a unique whole-number value for each column
 
 -- added a DEFAULT constraint
@@ -34,7 +34,7 @@ CREATE TABLE Customers
                     CONSTRAINT DF_Customers_Province
 					DEFAULT ('AB')
                     CONSTRAINT CK_Customers_Province
-					CHECK ( Province = 'AB' OR
+					CHECK ( Province = 'AB' OR 
 							Province = 'BC' OR
 							Province = 'SK' OR
 							Province = 'MB' OR
@@ -49,7 +49,7 @@ CREATE TABLE Customers
 							Province = 'PE')
                     NOT NULL,
     PostalCode      char(6)		
-                    CONSTRAINT CK_Customers_PostalCode
+                    CONSTRAINT CK_Customers_PostalCode     
 					Check (PostalCode LIKE '[A-Z][0-9][A-Z][0-9][A-Z][0-9]') -- checks if the data inserted follows the pattern
                 	NOT NULL,	
     PhoneNumber     char(13)
